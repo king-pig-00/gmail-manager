@@ -1,0 +1,48 @@
+<div class="home-container">
+  <div class="content-container">
+    <div class="flex gap-5 justify-content-between">
+      <h1>买涨买跌</h1>
+      <div>
+        <h3 class="flex flex-column">指數預測</h3>
+        <span>www.dpzs.cc</span>
+      </div>
+    </div>
+    <form [formGroup]="userSignupForm" (ngSubmit)="signup()">
+      <div class="top-action flex justify-content-around gap-1">
+        <button class="btn-custom">上证指数</button>
+        <button class="btn-custom">深证成指</button>
+        <button class="btn-custom">创业扳指</button>
+        <button class="btn-custom">黄金价格</button>
+      </div>
+      <div class="textfield-container gap-4">
+        <p-floatLabel class="input-content">
+          <input pInputText id="user" />
+          <label for="user"><i class="pi pi-user"></i> User 注册账户</label>
+        </p-floatLabel>
+        <p-floatLabel class="input-content">
+          <input type="password" pInputText id="password" />
+          <label for="password"
+            ><i class="pi pi-lock"></i> Password 请输入密码</label
+          >
+        </p-floatLabel>
+        <p-floatLabel class="input-content">
+          <input type="password" pInputText id="confirm" />
+          <label for="confirm"
+            ><i class="pi pi-check"></i> Confirm Password 确认密码</label
+          >
+        </p-floatLabel>
+      </div>
+      <div class="action-container">
+        <p>我起阅读铜意,相关条款和稳私政策</p>
+        <div class="button-content">
+          <a class="action-btn">Register 注册</a>
+        </div>
+        <div class="button-content flex justify-content-around gap-1">
+          <a href="/signin" class="btn btn-custom bottom-btn">Login<br>登录</a>
+          <a class="btn-custom bottom-btn">Visitors Enter<br>游客进入</a>
+          <a class="btn-custom bottom-btn">Online Service<br>在线客服</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

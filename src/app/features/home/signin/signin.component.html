@@ -1,0 +1,44 @@
+<div class="home-container">
+  <div class="content-container">
+    <div class="flex gap-5 justify-content-between">
+      <h1>JOB CENTER</h1>
+      <div>
+        <h3 class="flex flex-column">Welcome</h3>
+        <span>www.example.cc</span>
+      </div>
+    </div>
+    <form [formGroup]="userSigninForm" (ngSubmit)="signin()">
+      <!-- <div class="top-action flex justify-content-around gap-1">
+        <button class="btn-custom">上证指数</button>
+        <button class="btn-custom">深证成指</button>
+        <button class="btn-custom">创业扳指</button>
+        <button class="btn-custom">黄金价格</button>
+      </div> -->
+      <div class="textfield-container gap-4">
+        <p-inputGroup>
+          <p-inputGroupAddon>
+              <i class="pi pi-user"></i>
+          </p-inputGroupAddon>
+          <input pInputText placeholder="Username" />
+      </p-inputGroup>
+        <p-inputGroup>
+          <p-inputGroupAddon>
+            <p-checkbox [binary]="true" />
+          </p-inputGroupAddon>
+          <input type="text" pInputText placeholder="Username" />
+        </p-inputGroup>
+      </div>
+      <div class="action-container">
+        <p>我起阅读铜意,相关条款和稳私政策。</p>
+        <div class="button-content">
+          <a class="action-btn">Login 登录</a>
+        </div>
+        <div class="button-content flex justify-content-around gap-1">
+          <a href="/signup" class="btn-custom bottom-btn">Register<br />登记</a>
+          <a class="btn-custom bottom-btn">Visitors Enter<br />游客进入</a>
+          <a class="btn-custom bottom-btn">Online Service<br />在线客服</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

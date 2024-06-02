@@ -1,0 +1,109 @@
+
+/* PrimeNG */
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";
+@import "../node_modules/@fortawesome/fontawesome-free/css/all.css";
+
+// Define
+@import "assets/scss/index.scss";
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    margin: 0;
+}
+
+// Overwrite default anchor tag behavior
+a {
+    color: inherit;
+    text-decoration: none;
+    &:hover {
+        color: inherit;
+    }
+}
+
+// primeng overwrites
+
+.p-dataview {
+    background: transparent;
+    .p-dataview-content {
+        background: transparent !important;
+    }
+}
+
+.p-button-link {
+    padding: 0 !important;
+    color: var(--color-blue-500) !important;
+    text-decoration: underline;
+    .p-button-label {
+        font-weight: normal !important;
+    }
+}
+
+.toggle-button {
+    align-self: flex-end !important;
+    margin: 10px 20px !important;
+    background-color: var(--color-blue-400) !important;
+    color: var(--color-white) !important;
+    height: 30px !important;
+    width: 30px !important;
+    span {
+        font-size: 12px !important;
+    }
+}
+
+.table-paginator-container {
+    .p-paginator {
+        background-color: transparent;
+    }
+}
+
+// style for menu item links in navbar.compoennt.ts created programmatically (DO NOT DELETE)
+.menu-item-link {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+}
+
+// .notification-toast .p-toast {
+//     width: 100%;
+//     position: fixed;
+//     top: 80px;
+// }
+@media screen and (max-width: 720px) {
+    // stick the dialog to the bottom on small viewports
+    .p-dialog {
+        margin: 0 !important;
+    }
+}
+
+.dtd-date-picker-container {
+    .p-button {
+        // border-radius: 0 var(--border-radius-base) var(--border-radius-base) 0 !important;
+        // @extend .btn-primary;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .dtd-date-picker-container {
+        width: 100%;
+        .p-calendar {
+            width: 100%;
+        }
+    }
+}
+
+.mobile {
+    display: none !important;
+}
+
+@media (max-width: 768px) {
+    .mobile {
+        display: block !important;
+    }
+
+    .desktop {
+        display: none !important;
+    }
+}
