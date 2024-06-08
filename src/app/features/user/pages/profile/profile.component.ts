@@ -72,15 +72,15 @@ export class ProfileComponent {
   }
 
   signup() {
-    const formValues = this.userSignupForm.getRawValue();
-    this.userState
-      .signup({
-        username: formValues.username,
-        email: formValues.email,
-        password: formValues.password,
-      })
-      .then(() => {
-        this.refresh();
-      });
+    // const formValues = this.userSignupForm.getRawValue();
+    // this.userState
+    //   .signup({
+    //     username: formValues.username,
+    //     email: formValues.email,
+    //     password: formValues.password,
+    //   })
+    //   .then(() => {
+    //     this.refresh();
+    //   });
   }
 }

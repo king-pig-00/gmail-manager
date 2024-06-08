@@ -1,5 +1,5 @@
 .home-container {
-  // background-image: url("../../../../assets/img/login-bg.jpg");
+  background-image: url("../../../../assets/images/bg-image.png");
   background-size: cover;
   height: 100vh;
   width: 100%;
@@ -16,34 +16,37 @@
     gap: var(--spacing-md);
     padding: var(--spacing-md);
     border-radius: var(--border-radius-base);
-    border: 1px solid white;
     box-shadow: var(--shadow-base-1);
     max-width: 470px;
+    min-width: 400px;
     img {
       height: 3rem;
     }
     form {
       display: flex;
       flex-direction: column;
-      gap: var(--spacing-xl);
+      gap: var(--spacing-2xs);
 
       .textfield-container {
         display: flex;
-        flex-direction: row;
-        gap: var(--spacing-base);
-        flex-wrap: wrap;
-        
+        flex-direction: column;
+        gap: var(--spacing-base);        
       }
       .action-container {
         display: flex;
         flex-direction: column;
         padding: var(--spacing-2xs);
-        gap: var(--spacing-md);
+        gap: var(--spacing-l);
         .button-content {
           display: flex;
           flex-direction: row;
           gap: var(--spacing-sm);
           align-items: center;
+        }
+        span {
+          font-size: 18px;
+          display: flex;
+          gap: var(--spacing-md);
         }
       }
     }
@@ -52,7 +55,7 @@
 
 .action-btn {
   background-color: var(--blue-500);
-  width: 100%;
+  width: 70%;
   text-align: center;
   padding: var(--spacing-sm);
   border-radius: 30px;
