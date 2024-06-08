@@ -23,30 +23,9 @@ export class UserState {
     userService = inject(UserService);
     storageService = inject(StorageService);
     user$ = new BehaviorSubject<User | undefined>(undefined);
-    signin(config: any) {
-        // this.authService.login(username, password).subscribe({
-        //     next: data => {
-        //       this.storageService.saveUser(data);
-      
-        //       this.isLoginFailed = false;
-        //       this.isLoggedIn = true;
-        //       this.roles = this.storageService.getUser().roles;
-        //       this.reloadPage();
-        //     },
-        //     error: err => {
-        //       this.errorMessage = err.error.message;
-        //       this.isLoginFailed = true;
-        //     }
-        //   });
-
-
-        // this.updateIsLoading('saveHousingData', 'loading');
-        // const editUserId = this.userEditState.editUserId$.getValue();
-        // if (!editUserId) {
-        //     return Promise.reject('no edit user id');
-        // }
+    signin(email: string, password: string) {
         return lastValueFrom(
-            this.authService.login(config.email, config.password)
+            this.authService.signin(email, password)
         )
             .then((res) => {
                 this.storageService.saveUser(res);
@@ -61,9 +40,10 @@ export class UserState {
                 // this.updateIsLoading('saveHousingData', 'error');
             });
     }
-    signup(config: any) {
+    signup(username: string, email: string, password: string) {
+        const role = 'user'
         return lastValueFrom(
-            this.authService.register(config.username, config.email, config.password)
+            this.authService.signup(username, email, password, role)
         )
             .then((res) => {
                 // this.updateIsLoading('saveHousingData', 'success');

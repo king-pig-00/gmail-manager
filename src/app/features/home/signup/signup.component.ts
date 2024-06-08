@@ -48,19 +48,7 @@ export class SignupComponent {
   userState = inject(UserState);
   // status$ = this.userState.status$;
   userSignupForm = new FormGroup({
-    firstname: new FormControl<string | null>(null, {
-      nonNullable: true,
-      validators: [Validators.required],
-    }),
-    lastname: new FormControl<string | null>(null, {
-      nonNullable: true,
-      validators: [Validators.required],
-    }),
     email: new FormControl<string | null>(null, {
-      nonNullable: true,
-      validators: [Validators.required],
-    }),
-    phonenumber: new FormControl<string | null>(null, {
       nonNullable: true,
       validators: [Validators.required],
     }),
@@ -86,13 +74,11 @@ export class SignupComponent {
       return;
     }
     this.userState
-      .signup({
-        firstname: formValues.firstname,
-        lastname: formValues.lastname,
-        email: formValues.email,
-        phonenumber: formValues.phonenumber,
-        password: formValues.password,
-      })
+      .signup(
+        'John Pate',
+        formValues.email ?? '',
+        formValues.password ?? '',
+      )
       .then(() => {
         this.refresh();
       });

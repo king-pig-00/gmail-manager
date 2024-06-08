@@ -47,7 +47,7 @@ import { UserState } from '@app/core';
     InputGroupAddonModule,
     CheckboxModule,
     FormsModule,
-    DropdownModule
+    DropdownModule,
   ],
   providers: [UserState],
   templateUrl: './signin.component.html',
@@ -67,43 +67,29 @@ export class SigninComponent {
       validators: [Validators.required],
     }),
   });
-  cities: any[] | undefined;
 
-  selectedCountry: string | undefined;
-  private refresh$ = new Subject<void>();
+  private refreshTriggered$ = new BehaviorSubject<number>(0);
 
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
 
-  ngOnInit() {
-    this.cities = [
-      { name: 'Australia', code: 'AU' },
-      { name: 'Brazil', code: 'BR' },
-      { name: 'China', code: 'CN' },
-      { name: 'Egypt', code: 'EG' },
-      { name: 'France', code: 'FR' },
-      { name: 'Germany', code: 'DE' },
-      { name: 'India', code: 'IN' },
-      { name: 'Japan', code: 'JP' },
-      { name: 'Spain', code: 'ES' },
-      { name: 'United States', code: 'US' },
-    ];
-  }
+  ngOnInit() {}
+
   refresh(): void {
-    this.refresh$.next();
+    this.refreshTriggered$.next(new Date().getTime());
   }
 
   signin() {
     const formValues = this.userSigninForm.getRawValue();
     this.userState
-      .signin({
-        email: formValues.email,
-        password: formValues.password,
-      })
+      .signin(formValues.email ?? '', formValues.password ?? '')
       .then(() => {
         this.refresh();
+      })
+      .catch((error) => {
+        console.log(error);
       });
   }
 }

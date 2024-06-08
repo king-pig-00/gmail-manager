@@ -1,43 +1,34 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable, inject } from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
-const AUTH_API = 'http://localhost:8080/api/auth/';
-
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
+import { User } from '../models';
+import { ApiRoutes } from '../constants';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient) {}
+  private http = inject(HttpClient);
 
-  login(username: string, password: string): Observable<any> {
-    return this.http.post(
-      AUTH_API + 'signin',
-      {
-        username,
-        password,
-      },
-      httpOptions
-    );
+  signin(email: string, password: string) {
+    const requestBody = { email, password };
+    let params = new HttpParams();
+    params = params.append('email', email);
+    params = params.append('password', password);
+    return this.http.post<{
+      success: boolean;
+      data: User;
+      error?: string;
+    }>(`${ApiRoutes.auth}Signin`, requestBody);
   }
 
-  register(username: string, email: string, password: string): Observable<any> {
-    return this.http.post(
-      AUTH_API + 'signup',
-      {
-        username,
-        email,
-        password,
-      },
-      httpOptions
-    );
+  signup(username: string, email: string, password: string, role: string) {
+    const requestBody = { username, email, password, role };
+    return this.http.post<{
+      success: boolean;
+      data: User;
+      error?: string;
+    }>(`${ApiRoutes.auth}Signup`, requestBody);
   }
 
-  logout(): Observable<any> {
-    return this.http.post(AUTH_API + 'signout', { }, httpOptions);
-  }
 }
