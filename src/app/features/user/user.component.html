@@ -1,61 +1,54 @@
 <div class="page-container">
   <div class="navbar-container">
-    <app-navbar
-      [displayMenuButton]="true"
-      (menuButtonClick)="openMobileDrawer()"
-    ></app-navbar>
+      <app-navbar
+          [displayMenuButton]="true"
+          (menuButtonClick)="openMobileDrawer()"
+      ></app-navbar>
   </div>
 
-  <div class="main-content">
-    <router-outlet></router-outlet>
-    <div class="footer-container">
-      <app-footer></app-footer>
-    </div>
+  <div class="drawer-container" [class.drawer-expanded]="drawerExpanded">
+      <div class="toggle-button-container">
+          <p-button
+              [icon]="
+                  drawerExpanded
+                      ? 'pi pi-chevron-left'
+                      : 'pi pi-chevron-right'
+              "
+              styleClass="p-button-rounded p-button-text toggle-button"
+              (click)="toggleDrawerExpanded()"
+          ></p-button>
+      </div>
+      <ng-container *ngTemplateOutlet="navLinks"></ng-container>
+  </div>
+
+  <div class="main-content" [class.drawer-expanded]="drawerExpanded">
+      <router-outlet></router-outlet>
   </div>
 </div>
 
 <p-sidebar
   [(visible)]="mobileDrawerIsOpen"
-  position="top"
+  position="left"
   styleClass="operator-drawer"
 >
   <ng-container *ngTemplateOutlet="navLinks"></ng-container>
 </p-sidebar>
 
 <ng-template #navLinks>
-  <div class="nav-options">
-    <div class="icon-container">
-      <i class="pi pi-info-circle"></i>
-    </div>
-    <span>上證指數</span>
-  </div>
-  <div class="nav-options">
-    <div class="icon-container">
-      <i class="pi pi-map-marker"></i>
-    </div>
-    <span>恆生指數</span>
-  </div>
-  <div class="nav-options">
-    <div class="icon-container">
-      <i class="pi pi-flag"></i>
-    </div>
-    <span>深證成指</span>
-  </div>
-  <hr />
-  <ng-container *ngFor="let option of navOptions">
-    <!-- autoclose drawer on link clicks -->
-    <div (click)="mobileDrawerIsOpen = false">
-      <a
-        class="nav-options"
-        routerLinkActive="active"
-        #rla="routerLinkActive"
-        [routerLink]="option.path"
-      >
-        <div class="icon-container">
-          <i [class]="'pi ' + option.icon"></i>
-        </div>
-        <span>{{ option.displayName }}</span>
-      </a>
-    </div>
-  </ng-container>
+      <ng-container *ngFor="let option of navOptions">
+          <!-- autoclose drawer on link clicks -->
+          <div (click)="mobileDrawerIsOpen = false">
+              <a
+                  class="nav-options"
+                  routerLinkActive="active"
+                  #rla="routerLinkActive"
+                  [routerLink]="option.path"
+              >
+                  <div class="icon-container">
+                      <i [class]="'pi ' + option.icon"></i>
+                  </div>
+                  <span>{{ option.displayName }}</span>
+              </a>
+          </div>
+      </ng-container>
 </ng-template>

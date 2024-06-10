@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { SidebarModule } from 'primeng/sidebar';
 
-import { NavbarComponent } from './components/navbar/navbar.component';
+import { NavbarComponent } from '@app/shared';
 import { FooterComponent } from './components/footer/footer.component';
 
 @Component({
@@ -22,24 +22,28 @@ export class UserComponent {
         icon: string;
     }[] = [
         {
-            displayName: '客服',
-            path: './schedule',
-            icon: 'pi-shopping-cart',
+            displayName: 'Dashboard',
+            path: './dashboard',
+            icon: 'pi-chart-bar',
         },
         {
-            displayName: '积分储值',
-            path: './schedule',
-            icon: 'pi-clone',
+            displayName: 'To Do List',
+            path: './todo-list',
+            icon: 'pi-calendar',
         },
         {
-            displayName: '秋分兑换',
+            displayName: 'Account',
             path: './schedule',
-            icon: 'pi-arrow-right-arrow-left',
+            icon: 'pi-id-card',
+        },
+        {
+            displayName: 'Wallet',
+            path: './schedule',
+            icon: 'pi-wallet',
         },
     ];
 
     drawerExpanded = true;
-
     mobileDrawerIsOpen = false;
 
     toggleDrawerExpanded(): void {
