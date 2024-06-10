@@ -34,7 +34,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
     InputTextareaModule,
   ],
   templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.scss',
+  styleUrls: [ '../../user.scss', './dashboard.component.scss'],
   providers: [PhotoService],
 })
 export class DashboardComponent {

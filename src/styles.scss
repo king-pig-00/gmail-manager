@@ -1,11 +1,4 @@
-
-/* PrimeNG */
-@import "primeng/resources/themes/lara-light-blue/theme.css";
-@import "primeng/resources/primeng.css";
-@import "primeicons/primeicons.css";
-@import "../node_modules/@fortawesome/fontawesome-free/css/all.css";
-
-// Define
+/* You can add global styles to this file, and also import other style files */
 @import 'styles/index.scss';
 
 body {
@@ -66,6 +59,17 @@ a {
     gap: 6px;
 }
 
+.areacode-dropdown .p-dropdown {
+    height: 100%;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-color: #ced4da;
+    border-right-width: 0.5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 // .notification-toast .p-toast {
 //     width: 100%;
 //     position: fixed;
@@ -75,22 +79,6 @@ a {
     // stick the dialog to the bottom on small viewports
     .p-dialog {
         margin: 0 !important;
-    }
-}
-
-.dtd-date-picker-container {
-    .p-button {
-        // border-radius: 0 var(--border-radius-base) var(--border-radius-base) 0 !important;
-        // @extend .btn-primary;
-    }
-}
-
-@media screen and (max-width: 720px) {
-    .dtd-date-picker-container {
-        width: 100%;
-        .p-calendar {
-            width: 100%;
-        }
     }
 }
 
@@ -106,4 +94,8 @@ a {
     .desktop {
         display: none !important;
     }
+}
+
+.cal-week-view .cal-hour-segment::after {
+    content: '' !important;
 }
